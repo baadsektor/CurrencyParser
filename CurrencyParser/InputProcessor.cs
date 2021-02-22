@@ -22,7 +22,7 @@ namespace CurrencyParser
             string formattedInput = input.Replace(Consts.Whitespace, string.Empty).Replace(Consts.Comma, CultureInfo.InvariantCulture.NumberFormat.NumberDecimalSeparator);
             if (this.inputValidator.ValidateInput(formattedInput))
             {
-                decimal.TryParse(formattedInput, out decimal price);
+                decimal price = decimal.Parse(formattedInput, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
 
                 PriceWordRepresentationBuilder priceWordRepresentationBuilder = new PriceWordRepresentationBuilder(new NumberParser());
                 Console.WriteLine(priceWordRepresentationBuilder.Build(price));
