@@ -60,6 +60,38 @@ namespace CurrencyParser.Tests
         }
 
         [TestMethod]
+        public void BuildCurrencyString_Correctly_Parses_45_Thousand_100_Dollars()
+        {
+            decimal price = 45100.00m;
+            var priceWordRepresentationBuilder = new PriceWordRepresentationBuilder(new NumberParser());
+            Assert.AreEqual("forty-five thousand one hundred dollars", priceWordRepresentationBuilder.Build(price));
+        }
+
+        [TestMethod]
+        public void BuildCurrencyString_Correctly_Parses_125_Million_Dollars()
+        {
+            decimal price = 125000000.00m;
+            var priceWordRepresentationBuilder = new PriceWordRepresentationBuilder(new NumberParser());
+            Assert.AreEqual("one hundred twenty-five million dollars", priceWordRepresentationBuilder.Build(price));
+        }
+
+        [TestMethod]
+        public void BuildCurrencyString_Correctly_Parses_125_Thousand_Dollars()
+        {
+            decimal price = 125000.00m;
+            var priceWordRepresentationBuilder = new PriceWordRepresentationBuilder(new NumberParser());
+            Assert.AreEqual("one hundred twenty-five thousand dollars", priceWordRepresentationBuilder.Build(price));
+        }
+
+        [TestMethod]
+        public void BuildCurrencyString_Correctly_Parses_125_Million_125_Dollars()
+        {
+            decimal price = 125000125.00m;
+            var priceWordRepresentationBuilder = new PriceWordRepresentationBuilder(new NumberParser());
+            Assert.AreEqual("one hundred twenty-five million one hundred twenty-five dollars", priceWordRepresentationBuilder.Build(price));
+        }
+
+        [TestMethod]
         public void BuildCurrencyString_Correctly_Parses_999Million999Thousand999Dollars()
         {
             decimal price = 999999999.99m;
